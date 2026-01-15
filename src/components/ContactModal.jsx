@@ -20,14 +20,14 @@ export default function ContactModal({ open, onClose }){
   if(!open) return null
 
   return (
-    <div role="dialog" aria-modal="true" style={{position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem'}}>
-      <div style={{background: 'white', borderRadius: 12, width: '100%', maxWidth: 520, padding: '1.25rem'}}>
+    <div role="dialog" aria-modal="true" style={{position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', zIndex: 1000}}>
+      <div className="modal-content" style={{background: 'white', borderRadius: 12, width: '100%', maxWidth: 520, padding: '1.25rem'}}>
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-          <h3 style={{margin:0}}>Book a Free 15-Minute Consultation</h3>
+          <h3 style={{margin:0}}>Book a Free Consultation</h3>
           <button onClick={onClose} aria-label="Close">✕</button>
         </div>
 
-        <form onSubmit={handleSubmit} style={{marginTop: '1rem', display: 'grid', gap: '.75rem'}}>
+        <form onSubmit={handleSubmit} className="modal-form" style={{marginTop: '1rem', display: 'grid', gap: '.75rem'}}>
           <label>
             <div style={{fontSize: '.9rem'}}>Name</div>
             <input name="name" value={form.name} onChange={handleChange} required style={{width: '100%', padding: '.6rem', borderRadius: 8, border: '1px solid #e6e6e6'}} />

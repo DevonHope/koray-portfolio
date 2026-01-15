@@ -1,37 +1,342 @@
-@font-face{
-  font-family: 'Amperzand';
-  src: url('/src/assets/amperzand/Amperzand.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+@media (max-width: 800px){
+  .card-grid .client-card {
+    opacity: 0;
+    transform: none;
+    animation: fadeInCard 0.8s cubic-bezier(.2,.9,.3,1) forwards;
+    animation-delay: 0.1s;
+  }
+  .card-grid .client-card.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (max-width: 800px){
+  .card-grid .client-card {
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: flyInLeft 0.8s cubic-bezier(.2,.9,.3,1) forwards;
+    animation-delay: 0.1s;
+  }
+  .card-grid .client-card:nth-child(2n) {
+    transform: translateX(40px);
+    animation-name: flyInRight;
+  }
+  .card-grid .client-card.is-revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes flyInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes flyInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@media (max-width: 800px){
+  .client-overlay{
+    top: unset !important;
+    bottom: 0 !important;
+    left: 0; right: 0;
+    height: 40%;
+    min-height: 70px;
+    max-height: 100px;
+    background: linear-gradient(0deg, rgba(255,255,255,0.92) 80%, rgba(255,255,255,0.5) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0.5rem 1.25rem 1rem 1.25rem;
+    pointer-events: none;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+@media (max-width: 800px){
+  .client-overlay{
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    top: auto;
+    height: 40%;
+    min-height: 70px;
+    max-height: 100px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background: linear-gradient(0deg, rgba(255,255,255,0.92) 80%, rgba(255,255,255,0.5) 100%);
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .client-overlay h3, .client-overlay p {
+    font-size: 0.95rem;
+    margin: 0 0 0.25rem 0;
+    color: var(--text);
+    text-shadow: 0 2px 8px rgba(255,255,255,0.7);
+  }
+}
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px) saturate(120%);
+  opacity: 0.55;
+  pointer-events: none;
+  mix-blend-mode: lighten;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+/* 8 animated floating circles, faster speeds */
+.circle-peach {
+  width: 120px; height: 120px;
+  left: 8vw; bottom: 12vh;
+  background: radial-gradient(circle at 30% 70%, var(--pastel-peach), var(--pastel-blush));
+  animation-name: move-peach;
+  animation-duration: 22s;
+  animation-direction: alternate;
+}
+.circle-blush {
+  width: 90px; height: 90px;
+  right: 10vw; bottom: 18vh;
+  background: radial-gradient(circle at 60% 40%, var(--pastel-blush), var(--pastel-lavender));
+  animation-name: move-blush;
+  animation-duration: 24s;
+  animation-direction: alternate-reverse;
+}
+.circle-lavender {
+  width: 70px; height: 70px;
+  left: 20vw; top: 18vh;
+  background: radial-gradient(circle at 60% 40%, var(--pastel-lavender), var(--pastel-cream));
+  animation-name: move-lavender;
+  animation-duration: 28s;
+  animation-direction: alternate;
+}
+.circle-rose {
+  width: 100px; height: 100px;
+  right: 18vw; top: 10vh;
+  background: radial-gradient(circle at 40% 60%, var(--pastel-rose), var(--pastel-peach));
+  animation-name: move-rose;
+  animation-duration: 30s;
+  animation-direction: alternate-reverse;
+}
+.circle-cream {
+  width: 60px; height: 60px;
+  left: 55vw; bottom: 8vh;
+  background: radial-gradient(circle at 60% 40%, var(--pastel-cream), var(--pastel-blush));
+  animation-name: move-cream;
+  animation-duration: 26s;
+  animation-direction: alternate;
+}
+.circle-peach2 {
+  width: 80px; height: 80px;
+  left: 70vw; top: 12vh;
+  background: radial-gradient(circle at 60% 40%, var(--pastel-peach), var(--pastel-lavender));
+  animation-name: move-peach2;
+  animation-duration: 20s;
+  animation-direction: alternate-reverse;
+}
+.circle-blush2 {
+  width: 60px; height: 60px;
+  right: 30vw; top: 30vh;
+  background: radial-gradient(circle at 60% 40%, var(--pastel-blush), var(--pastel-rose));
+  animation-name: move-blush2;
+  animation-duration: 18s;
+  animation-direction: alternate;
+}
+.circle-lavender2 {
+  width: 50px; height: 50px;
+  left: 40vw; bottom: 30vh;
+  background: radial-gradient(circle at 60% 40%, var(--pastel-lavender), var(--pastel-rose));
+  animation-name: move-lavender2;
+  animation-duration: 16s;
+  animation-direction: alternate-reverse;
+}
+@keyframes move-cream {
+  0% { left: 55vw; bottom: 8vh; }
+  50% { left: 60vw; bottom: 40vh; }
+  100% { left: 30vw; bottom: 60vh; }
+}
+@keyframes move-peach2 {
+  0% { left: 70vw; top: 12vh; }
+  50% { left: 60vw; top: 40vh; }
+  100% { left: 20vw; top: 60vh; }
+}
+@keyframes move-blush2 {
+  0% { right: 30vw; top: 30vh; }
+  50% { right: 10vw; top: 50vh; }
+  100% { right: 40vw; top: 70vh; }
+}
+@keyframes move-lavender2 {
+  0% { left: 40vw; bottom: 30vh; }
+  50% { left: 60vw; bottom: 50vh; }
+  100% { left: 10vw; bottom: 70vh; }
+}
+
+@keyframes move-peach {
+  0% { left: 8vw; bottom: 12vh; }
+  50% { left: 30vw; bottom: 30vh; }
+  100% { left: 12vw; bottom: 60vh; }
+}
+@keyframes move-blush {
+  0% { right: 10vw; bottom: 18vh; }
+  50% { right: 30vw; bottom: 40vh; }
+  100% { right: 12vw; bottom: 60vh; }
+}
+@keyframes move-lavender {
+  0% { left: 20vw; top: 18vh; }
+  50% { left: 60vw; top: 30vh; }
+  100% { left: 10vw; top: 60vh; }
+}
+@keyframes move-rose {
+  0% { right: 18vw; top: 10vh; }
+  50% { right: 40vw; top: 40vh; }
+  100% { right: 12vw; top: 60vh; }
+}
+/* Floating glass circles */
+.floating-circles {
+  position: fixed;
+  pointer-events: none;
+  left: 0; right: 0; bottom: 0; top: 0;
+  z-index: -2;
+}
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px) saturate(120%);
+  opacity: 0.55;
+  pointer-events: none;
+  mix-blend-mode: lighten;
+}
+.circle-peach {
+  width: 120px; height: 120px;
+  left: 8vw; bottom: 12vh;
+  background: radial-gradient(circle at 30% 70%, var(--pastel-peach), var(--pastel-blush));
+}
+.circle-blush {
+  width: 90px; height: 90px;
+  right: 10vw; bottom: 18vh;
+  background: radial-gradient(circle at 60% 40%, var(--pastel-blush), var(--pastel-lavender));
+}
+.circle-lavender {
+  width: 70px; height: 70px;
+  left: 20vw; top: 18vh;
+  background: radial-gradient(circle at 60% 40%, var(--pastel-lavender), var(--pastel-cream));
+}
+.circle-rose {
+  width: 100px; height: 100px;
+  right: 18vw; top: 10vh;
+  background: radial-gradient(circle at 40% 60%, var(--pastel-rose), var(--pastel-peach));
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 :root{
   --bg: #ffffff;
   --header-offset: 12px;
-  --page-bg: #fbf7f3; /* slightly darker warm background behind header */
+
+  /* New palette (CSS vars provided by the user) */
+  --cornsilk: #fffbe2; /* cornsilk */
+  --icy-blue: #a3d9ff; /* icy-blue */
+  --tangerine-dream: #ff8c57; /* tangerine-dream */
+  --tea-green: #c1e7bc; /* tea-green */
+  --lavender-blush: #feeff2; /* lavender-blush */
+
+  /* fallback page background uses cornsilk */
+  --page-bg: var(--cornsilk);
+
+  /* core text/neutral colors left unchanged for accessibility */
   --text: #0f1720;
   --muted: #6b7280;
-  /* pastel-only palette (inspired by Fabric) */
-  /* warm pastels */
-  --pastel-peach: #ffb89a; /* warm peach (bolder) */
-  --pastel-blush: #ffc7d5; /* warm blush (bolder) */
-  --pastel-lavender: #e7d1ff; /* warm lavender (bolder) */
-  --pastel-cream: #ffe7b2; /* warm cream (bolder) */
-  --pastel-rose: #ffb3d1; /* warm rose (bolder) */
-  /* overlay gradients (solid, opaque warm pastels) */
-  --overlay-peach-start: #ffb89a;
-  --overlay-peach-end: #ffc7d5;
-  --overlay-blush-start: #ffc7d5;
-  --overlay-blush-end: #e7d1ff;
-  --overlay-lavender-start: #e7d1ff;
-  --overlay-lavender-end: #ffe7b2;
-  --overlay-rose-start: #ffb3d1;
-  --overlay-rose-end: #ffb89a;
+
+  /* map existing "pastel" tokens to the new palette so the rest of the CSS remains unchanged */
+  --pastel-peach: var(--tangerine-dream);
+  --pastel-blush: var(--lavender-blush);
+  --pastel-lavender: var(--icy-blue);
+  --pastel-cream: var(--cornsilk);
+  --pastel-rose: var(--tea-green);
+
+  /* overlay gradients now use the new palette */
+  --overlay-peach-start: var(--tangerine-dream);
+  --overlay-peach-end: var(--lavender-blush);
+  --overlay-blush-start: var(--lavender-blush);
+  --overlay-blush-end: var(--tangerine-dream);
+  --overlay-lavender-start: var(--icy-blue);
+  --overlay-lavender-end: var(--cornsilk);
+  --overlay-rose-start: var(--tea-green);
+  --overlay-rose-end: var(--tangerine-dream);
+
+  /* small helpers and accents */
   --muted-2: #94a3b8;
   --accent-2: var(--pastel-peach);
   --accent: var(--pastel-rose);
+
+  /* palette gradients for future use */
+  --gradient-top: linear-gradient(0deg, var(--cornsilk), var(--icy-blue), var(--tangerine-dream), var(--tea-green), var(--lavender-blush));
+  --gradient-right: linear-gradient(90deg, var(--cornsilk), var(--icy-blue), var(--tangerine-dream), var(--tea-green), var(--lavender-blush));
+  --gradient-bottom: linear-gradient(180deg, var(--cornsilk), var(--icy-blue), var(--tangerine-dream), var(--tea-green), var(--lavender-blush));
+  --gradient-left: linear-gradient(270deg, var(--cornsilk), var(--icy-blue), var(--tangerine-dream), var(--tea-green), var(--lavender-blush));
+  --gradient-radial: radial-gradient(var(--cornsilk), var(--icy-blue), var(--tangerine-dream), var(--tea-green), var(--lavender-blush));
+
+  /* Liquid-glass standard variables (preserved/unmodified) */
+  --liquid-bg: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.6));
+  --liquid-backdrop: blur(12px) saturate(120%);
+  --liquid-border: 1px solid rgba(255,255,255,0.45);
+  --liquid-shadow: 0 18px 40px rgba(12,20,30,0.12);
 }
+
+/* Reusable utility for the liquid glass panel (header, dropdown, cards) */
+.liquid-glass{
+  background: var(--liquid-bg);
+  -webkit-backdrop-filter: var(--liquid-backdrop);
+  backdrop-filter: var(--liquid-backdrop);
+  border: var(--liquid-border);
+  box-shadow: var(--liquid-shadow);
+}
+
+/* Apply the standardized liquid-glass to the header container */
+.site-header .container{
+  /* ...existing code... */
+  background: var(--liquid-bg);
+  -webkit-backdrop-filter: var(--liquid-backdrop);
+  backdrop-filter: var(--liquid-backdrop);
+  border-radius:14px; padding:0.6rem var(--header-offset); box-shadow:var(--liquid-shadow); border:var(--liquid-border); margin:0 var(--header-offset); width: calc(100% - calc(var(--header-offset) * 2)); max-width: none; position:relative; transition: border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+/* Ensure the mobile dropdown uses the exact same liquid-glass effect */
+@media (max-width: 480px){
+  .nav-links.nav-open{
+    /* more solid, less transparent while keeping liquid-glass properties */
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,0.98)) !important;
+    -webkit-backdrop-filter: var(--liquid-backdrop) !important;
+    backdrop-filter: var(--liquid-backdrop) !important;
+    box-shadow: var(--liquid-shadow) !important;
+    border: var(--liquid-border) !important;
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+    top: calc(100% - 6px);
+    z-index: 1000;
+    opacity: 1; transform: translateY(0); visibility: visible;
+  }
+  .nav-links a{position:relative; z-index:1001}
+}
+
 html{scroll-behavior: smooth}
 /* page background slightly darker than header */
 body{background:var(--page-bg)}
@@ -47,9 +352,15 @@ body{
 .container{max-width:var(--max-width); margin:0 auto; padding:2rem}
 
 .nav{display:flex; justify-content:space-between; align-items:center; gap:1rem}
-.nav-links{display:flex; gap:1rem; align-items:center}
+.nav-links{display:flex; gap:1rem; align-items:center; transition: all 0.3s ease}
 .nav a{color:var(--muted); text-decoration:none; font-weight:500}
 .nav a:hover{background:var(--pastel-blush); color:var(--text); border-radius:6px; padding:0.25rem 0.5rem}
+
+/* Hamburger menu */
+.hamburger{display:none; flex-direction:column; justify-content:space-around; width:30px; height:30px; background:none; border:none; cursor:pointer; padding:0}
+.hamburger span{width:100%; height:3px; background:var(--accent); border-radius:2px; transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px, 5px)}
+.hamburger.active span:nth-child(2){transform:rotate(-45deg) translate(7px, -6px)}
 
 /* wordmark logo */
 .logo{display:inline-flex; gap:.6rem; align-items:center; text-decoration:none; color:var(--text); font-weight:800; font-size:2.5rem; text-transform:lowercase; letter-spacing:-0.02em}
@@ -60,12 +371,11 @@ body{
 .cta:hover{transform:translateY(-3px); box-shadow:0 10px 22px rgba(20,24,28,0.06)}
 
 /* profile button (different two-tone warm pastel) */
-.profile-btn{background:linear-gradient(90deg, var(--pastel-blush), var(--pastel-rose)); color:var(--text); border-radius:9999px; padding:0.6rem 1rem; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition: transform .16s ease, box-shadow .16s ease; font-family:inherit; font-size:1rem; line-height:1;}
+.profile-btn{background:linear-gradient(90deg, var(--pastel-blush), var(--pastel-rose)); color:var(--text); border-radius:9999px; padding:0.6rem 1rem; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:.5rem; transition: transform .16s ease, box-shadow .16s ease; font-family:inherit; font-size:1rem; line-height:1; text-align:center;}
 .profile-btn:hover{transform:translateY(-3px); box-shadow:0 10px 22px rgba(20,24,28,0.06)}
 
 .hero{display:grid; grid-template-columns:1fr 360px; align-items:center; gap:2rem; padding:5rem 0; border-bottom:1px solid rgb(20, 24, 28); position:relative; overflow:visible}
-.hero::before{content: ''; position:absolute; right:-90px; top:-40px; width:360px; height:360px; background: radial-gradient(circle at 20% 30%, var(--pastel-peach), var(--pastel-lavender)); border-radius:50%; pointer-events:none}
-.hero h1{font-size:4rem; margin:0 0 .5rem; font-weight:500; font-family: Reckless;} 
+.hero h1{font-size:4rem; margin:0 0 .5rem; font-weight:500; font-family: 'Reckless';} 
 .hero p{font-size:1.3rem; margin:0 0 1rem; color:var(--muted)}
 .card{background:var(--accent-2); padding:1.5rem; border-radius:12px; min-height:220px; transition: transform .18s ease, box-shadow .18s ease}
 .card:hover{transform:translateY(-4px); box-shadow:0 8px 24px rgba(20,24,28,0.06)}
@@ -100,21 +410,25 @@ body{
 .section:nth-of-type(5n+4) .section-inner{background:linear-gradient(135deg, var(--pastel-cream) 0%, var(--pastel-rose) 100%)}
 .section:nth-of-type(5n+5) .section-inner{background:linear-gradient(135deg, var(--pastel-rose) 0%, var(--pastel-peach) 100%)}
 .section-content{padding-top:.5rem}
-.section h2{margin:0 0 .5rem; font-size: 3rem; position:relative; padding:0 0 1rem 0; font-family: Reckless; font-weight: lighter;}
+.section h2{margin:0 0 .5rem; font-size: 3rem; position:relative; padding:0 0 1rem 0; font-family: 'Reckless'; font-weight: lighter;}
 .section h2::before{display:none}
 
 /* reveal animation */
-.reveal{opacity:0; transform:translateY(12px); transition: opacity .62s ease, transform .62s cubic-bezier(.2,.9,.3,1); will-change:opacity,transform}
+.reveal{opacity:0; transform:translateY(12px); transition: opacity .62s ease, transform .62s cubic-bezier(.2,.9,.3,1);}
 .reveal.is-revealed{opacity:1; transform:translateY(0)}
 
 .footer{padding:2rem 0; color:var(--muted); text-align:center}
 .muted{color:var(--muted)}
 
-/* sticky header */
+/* Profile summary section */
+.profile-summary{padding:3rem 0; text-align:center; position:relative; overflow:visible}
+/* .profile-summary::before{content: ''; position:absolute; left:-60px; bottom:-60px; width:200px; height:200px; background: radial-gradient(circle at 20% 30%, var(--pastel-peach), var(--pastel-lavender)); border-radius:50%; pointer-events:none; z-index:-1} */
+.profile-summary .card{max-width:800px; margin:0 auto; padding:2rem}
 .site-header{position:sticky; top:var(--header-offset); z-index:1000; display:flex; justify-content:center; padding:0.25rem 0}
 /* inner panel that floats */
-.site-header .container{background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.6)); -webkit-backdrop-filter: blur(12px) saturate(120%); backdrop-filter: blur(12px) saturate(120%); border-radius:14px; padding:0.6rem var(--header-offset); box-shadow:0 18px 40px rgba(12,20,30,0.12); border:1px solid rgba(255,255,255,0.45); margin:0 var(--header-offset); width: calc(100% - calc(var(--header-offset) * 2)); max-width: none}
+.site-header .container{background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.6)); -webkit-backdrop-filter: blur(12px) saturate(120%); backdrop-filter: blur(12px) saturate(120%); border-radius:14px; padding:0.6rem var(--header-offset); box-shadow:0 18px 40px rgba(12,20,30,0.12); border:1px solid rgba(255,255,255,0.45); margin:0 var(--header-offset); width: calc(100% - calc(var(--header-offset) * 2)); max-width: none; position:relative; transition: border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1)}
 .site-header .container.nav{box-shadow: 0 8px 24px rgba(12,20,30,0.08), 0 20px 48px rgba(12,20,30,0.12);}
+.site-header .container.menu-open{border-radius:14px 14px 0 0;}
 
 /* prevent anchor target from being hidden behind sticky header */
 .section{scroll-margin-top:96px}
@@ -123,17 +437,86 @@ body{
   .hero{grid-template-columns:1fr;}
   .card{order: -1}
   .container{padding:1rem}
-  .hero h1{font-size:1.5rem}
+  .hero h1{font-size:2.2rem; line-height:1.2}
+  .hero p{font-size:1.1rem; line-height:1.5}
   .profile-img{width:64px; height:64px}
   .section{padding:2.25rem 0}
-  .section-inner{padding:1rem}
-  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .section-inner{padding:1.5rem}
+  .card-grid{grid-template-columns:repeat(2,1fr); gap:1.5rem}
   .client-card img{min-height:200px}
-  .approach-grid{grid-template-columns:1fr; gap:1rem}
+  .approach-grid{grid-template-columns:1fr; gap:1.5rem}
   .approach-image img{height:260px}
-  .approach-card{align-items:flex-start}
+  .approach-card{align-items:flex-start; padding:1.5rem}
+  .approach-card p{font-size:1.1rem; line-height:1.6}
+  .section h2{font-size:2.2rem; margin-bottom:1rem}
+  .cta{min-height:44px; padding:0.75rem 1.25rem; font-size:1rem}
+  .profile-btn{min-height:44px; padding:0.75rem 1.25rem; font-size:1rem}
+  .footer{padding:2rem 1rem}
 }
 
 @media (max-width: 480px){
-  .card-grid{grid-template-columns:1fr}
+  .card-grid{grid-template-columns:1fr; gap:1rem}
+  .hero h1{font-size:1.8rem}
+  .hero p{font-size:1rem}
+  .hero{padding:3rem 0}
+  .section h2{font-size:1.8rem}
+  .approach-card p{font-size:1rem}
+  .container{padding:0.75rem}
+  .section-inner{padding:1rem}
+  .client-card img{min-height:180px}
+  .approach-image img{height:220px}
+  .cta{width:100%; margin-bottom:0.5rem}
+  .profile-btn{width:100%}
+  .nav-links{flex-direction:column; gap:0.75rem; align-items:stretch; width:100%; display:none; position:absolute; top:100%; left:0; right:0; background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.6)); -webkit-backdrop-filter: blur(12px) saturate(120%); backdrop-filter: blur(12px) saturate(120%); border-radius:0 0 14px 14px; padding:1rem; box-shadow:0 8px 24px rgba(12,20,30,0.12); border:1px solid rgba(255,255,255,0.45); border-top:none; z-index:999; opacity:0; transform:translateY(-10px); transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s ease}
+  .nav-links.nav-open{display:flex; opacity:1; transform:translateY(0); visibility:visible}
+  .nav-links a{text-align:center; padding:0.75rem; border-radius:8px; display:block; transition:background 0.2s ease, transform 0.2s ease; opacity:0; transform:translateY(-5px); animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards}
+  .nav-links a:nth-child(1){animation-delay:0.1s}
+  .nav-links a:nth-child(2){animation-delay:0.15s}
+  .nav-links a:nth-child(3){animation-delay:0.2s}
+  .nav-links a:nth-child(4){animation-delay:0.25s}
+  .nav-links a:hover{background:var(--pastel-blush) !important}
+  .site-header .container{margin:0 0.5rem; width: calc(100% - 1rem); flex-direction:row}
+  .nav{flex-direction:row; width:100%}
+  .hamburger{display:flex}
+  /* Modal improvements for mobile */
+  .modal-content{max-width:90vw; margin:1rem; padding:1rem}
+  .modal-form button{min-height:44px; padding:0.75rem 1rem; font-size:1rem}
+  .modal-form input, .modal-form textarea{font-size:1rem; padding:0.75rem}
+  .profile-summary .card{max-width:800px; margin:0 auto; padding:2rem}
+  .profile-summary .card div:first-child{flex-direction:column; gap:1rem}
+  .profile-summary .card p{font-size:0.95rem; line-height:1.5}
+  .profile-summary::before{left:-40px; bottom:-40px; width:150px; height:150px}
+}
+
+@media (min-width: 801px){
+  .nav-links{display:flex !important}
+  .hamburger{display:none !important}
+  .profile-summary .card div:first-child{flex-direction:row !important}
+}
+
+@media (max-width: 480px){
+  .site-header .container.menu-open{ /* ensure no visible bottom border */
+    box-shadow: none;
+    border-bottom: none;
+  }
+
+  /* disable previously-added pseudo-element so blur is applied directly by the dropdown */
+  .site-header .container.menu-open::after{ display:none !important }
+
+  /* ensure the dropdown has the same liquid-glass look as the header container */
+  .nav-links.nav-open{
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,0.98));
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    backdrop-filter: blur(12px) saturate(120%);
+    box-shadow: 0 8px 24px rgba(12,20,30,0.12);
+    border: 1px solid rgba(255,255,255,0.45);
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+    top: calc(100% - 6px); /* overlap slightly to hide seam */
+    z-index: 1000; /* above header container but match visual effect */
+    opacity: 1; transform: translateY(0); visibility: visible;
+  }
+
+  /* make links sit above the blurred background */
+  .nav-links a{position:relative; z-index:1001}
 }
