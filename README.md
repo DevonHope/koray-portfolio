@@ -1,10 +1,10 @@
 Minimalistic React site for Koray Ozkan (therapist).
 
 - Built with Vite + React
-- Features: Hero, Who I Help, Approach, Services, About, Book CTA (email + Psychology Today link)
+- Features: Header, Who I Help, Approach, Services, About, Book CTA (email + Psychology Today link)
 
 To run locally:
-1. cd websiteDevBuild/koray-portfolio
+1. cd koray-portfolio
 2. npm install
 3. npm run dev
 
