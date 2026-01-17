@@ -3,8 +3,12 @@
 > vite --port 5173
 
 
-  VITE v5.4.21  ready in 143 ms
+  VITE v5.4.21  ready in 158 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: http://209.74.95.160:5173/
   ➜  Network: http://172.17.0.1:5173/
+Files in the public directory are served at the root path.
+Instead of /public/.env, use /.env.
+Files in the public directory are served at the root path.
+Instead of /public/js/main.js, use /js/main.js.
