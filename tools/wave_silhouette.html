@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wave Silhouette Animation (for export)</title>
+  <style>
+    html,body{height:100%;margin:0;background:#0b1020;}
+    .stage{width:1920px;height:1080px;display:block;position:relative;overflow:hidden;background:linear-gradient(180deg,#08101a 0%, #0b1020 60%);}
+    svg{display:block;width:100%;height:100%}
+
+    /* silhouette mask - everything inside #silhouette will be dark */
+    .silhouette-fill{fill:#0b1020}
+  </style>
+</head>
+<body>
+  <div class="stage" id="stage">
+    <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <defs>
+        <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#0e1a2b"/>
+          <stop offset="60%" stop-color="#0b1020"/>
+        </linearGradient>
+
+        <linearGradient id="waveGrad" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#0b2340" stop-opacity="1" />
+          <stop offset="100%" stop-color="#041027" stop-opacity="1" />
+        </linearGradient>
+
+        <!-- a soft light to make the horizon glow -->
+        <radialGradient id="horizon" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#1f3a65" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#081020" stop-opacity="0"/>
+        </radialGradient>
+
+      </defs>
+
+      <!-- background -> subtle glow -->
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#bg)" />
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#horizon)" opacity="0.5" />
+
+      <!-- three layered wave groups (each animates horizontally) -->
+      <g id="waves" transform="translate(0,300)">
+        <path id="wave-back" d="M0 280 C340 200 680 360 1020 300 C1360 240 1700 120 1920 160 L1920 400 L0 400 Z" fill="url(#waveGrad)" opacity="0.45">
+          <animateTransform attributeName="transform" type="translate" values="0 0; -180 0; 0 0" dur="22s" repeatCount="indefinite"/>
+        </path>
+
+        <path id="wave-mid" d="M0 320 C260 240 520 160 780 200 C1040 240 1300 360 1560 320 C1820 280 2080 200 2400 240 L2400 420 L0 420 Z" fill="#071425" opacity="0.6">
+          <animateTransform attributeName="transform" type="translate" values="0 0; 260 0; 0 0" dur="14s" repeatCount="indefinite"/>
+        </path>
+
+        <path id="wave-front" d="M0 360 C200 300 420 380 640 340 C860 300 1080 220 1300 260 C1520 300 1740 360 1920 340 L1920 480 L0 480 Z" fill="#020617" opacity="0.85">
+          <animateTransform attributeName="transform" type="translate" values="0 0; -360 0; 0 0" dur="9s" repeatCount="indefinite"/>
+        </path>
+      </g>
+
+      <!-- silhouette overlay: we mask the top of the stage with a dark shape so waves appear as moving light against silhouette -->
+      <g id="silhouette">
+        <!-- big dark foreground shape (like land) -->
+        <path d="M0 560 C220 520 420 560 640 540 C860 520 1100 480 1320 500 C1540 520 1780 580 1920 560 L1920 1080 L0 1080 Z" class="silhouette-fill"/>
+      </g>
+
+      <!-- subtle vignette to focus center -->
+      <rect width="1920" height="1080" fill="black" opacity="0.07"/>
+    </svg>
+  </div>
+
+  <!-- small script to allow easy DOM-based export scaling -->
+  <script>
+    // nothing required; page is ready for rendering by headless browser
+  </script>
+</body>
+</html>

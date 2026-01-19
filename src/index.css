@@ -520,3 +520,19 @@ body{
   /* make links sit above the blurred background */
   .nav-links a{position:relative; z-index:1001}
 }
+
+/* Wave background (replaces the floating circles visually) */
+.wave-bg {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;             /* place at page bottom; adjust if you want top */
+  z-index: -3;           /* behind main content and floating circles */
+  pointer-events: none;  /* so it never intercepts clicks */
+  transform: translateZ(0); /* help with smoother animations on some devices */
+  opacity: 0.95;         /* tune strength */
+}
+
+.wave-bg--small {
+  height: 100px !important;
+}

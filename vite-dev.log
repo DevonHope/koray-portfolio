@@ -3,12 +3,34 @@
 > vite --port 5173
 
 
-  VITE v5.4.21  ready in 158 ms
+  VITE v5.4.21  ready in 138 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: http://209.74.95.160:5173/
   ➜  Network: http://172.17.0.1:5173/
 Files in the public directory are served at the root path.
 Instead of /public/.env, use /.env.
+The request url "/proc/self/environ" is outside of Vite serving allow list.
+
+- /home/lizadmin/koray-portfolio
+
+Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.
+
+Files in the public directory are served at the root path.
+Instead of /public/.env, use /.env.
 Files in the public directory are served at the root path.
 Instead of /public/js/main.js, use /js/main.js.
+Files in the public directory are served at the root path.
+Instead of /public/static/favicon.png, use /static/favicon.png.
+6:04:07 PM [vite] Internal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. If you are using JSX, make sure to name the file with the .jsx or .tsx extension.
+  Plugin: vite:import-analysis
+  File: /home/lizadmin/koray-portfolio/.git/index
+      at TransformPluginContext._formatError (file:///home/lizadmin/koray-portfolio/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///home/lizadmin/koray-portfolio/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at TransformPluginContext.transform (file:///home/lizadmin/koray-portfolio/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64259:14)
+      at async PluginContainer.transform (file:///home/lizadmin/koray-portfolio/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///home/lizadmin/koray-portfolio/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+Files in the public directory are served at the root path.
+Instead of /public/.env, use /.env.
+Files in the public directory are served at the root path.
+Instead of /public/.env, use /.env.

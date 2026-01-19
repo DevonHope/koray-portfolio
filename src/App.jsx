@@ -4,12 +4,13 @@ import Hero from './components/Hero'
 import Section from './components/Section'
 import ContactModal from './components/ContactModal'
 import ClientCard from './components/ClientCard'
-import FloatingCircles from './components/FloatingCircles'
 import distress from './assets/distress.png'
 import youthImg from './assets/youth.jpg'
 import familyImg from './assets/family.jpg'
 import couplesImg from './assets/couples.jpeg'
 import portfolioImg from './assets/portfolio.jpeg'
+import WavePattern from './components/WavePattern'
+// import FloatingCircles from './components/FloatingCircles' // commented out to disable background animation
 
 export default function App() {
   const [isContactOpen, setContactOpen] = useState(false)
@@ -107,7 +108,8 @@ export default function App() {
       </main>
 
 
-      <FloatingCircles />
+      <WavePattern className="wave-bg" height={180} />
+      {/* <FloatingCircles /> */} {/* disabled floating circles */}
       <footer className="footer container">
         <small>© {new Date().getFullYear()} Koray Ozkan — Psychotherapist • Online sessions available</small>
       </footer>
